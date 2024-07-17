@@ -1,4 +1,8 @@
-import { useState } from 'react'
+import { useState } from 'react';
+
+const getRandomInt = (max) => Math.floor(Math.random() * max);
+
+const Button = ({innerText, onClick}) => <button onClick={onClick} >{innerText}</button>
 
 const App = () => {
   const anecdotes = [
@@ -44,11 +48,15 @@ const App = () => {
     }
   ];
 
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(getRandomInt(10));
 
   return (
     <main className="anecdotes">
-      {anecdotes[selected]["anecdote"]}
+      <figure>
+        <blockquote>{anecdotes[selected]["anecdote"]}</blockquote>
+        <figcaption>{anecdotes[selected]["author"]}</figcaption>
+      </figure>
+      <Button onClick={() => setSelected(getRandomInt(anecdotes.length))} innerText="Get a random anecdote" />
     </main>
   );
 }
