@@ -6,25 +6,28 @@ const setFeedback = (newValue, setter)  => {
 
 const Button = ({innerText, onClick, className=""})  => <button className={className} onClick={onClick}>{innerText}</button>;
 
-const SingleStatistics = ({name, value}) => <span><b>{name}</b>: {value}</span>;
+const StatisticsLine = ({name, value}) => <span><b>{name}</b>: {value}</span>;
 
 const Statistics = ({good, neutral, bad}) => {
   let all = good + neutral + bad;
-  let average = (good - bad) / all;
-  if (isNaN(average)) average = 0;
-  let positive = 100 * good / all;
-  if (isNaN(positive)) positive = 0;
+  if (all > 0) {
+    let average = (good - bad) / all;
+    if (isNaN(average)) average = 0;
+    let positive = 100 * good / all;
+    if (isNaN(positive)) positive = 0;
 
-  return (
-    <ul className="statistics">
-      <li><SingleStatistics name="Good" value={good} /></li>
-      <li><SingleStatistics name="Neutral" value={neutral} /></li>
-      <li><SingleStatistics name="Bad" value={bad} /></li>
-      <li><SingleStatistics name="All" value={all} /></li>
-      <li><SingleStatistics name="Average" value={average} /></li>
-      <li><SingleStatistics name="Positive" value={`${positive} %`} /></li>
-    </ul>
-  );
+    return (
+      <ul className="statistics">
+        <li><StatisticsLine name="Good" value={good} /></li>
+        <li><StatisticsLine name="Neutral" value={neutral} /></li>
+        <li><StatisticsLine name="Bad" value={bad} /></li>
+        <li><StatisticsLine name="All" value={all} /></li>
+        <li><StatisticsLine name="Average" value={average} /></li>
+        <li><StatisticsLine name="Positive" value={`${positive} %`} /></li>
+      </ul>
+    );
+  }
+  return <p><b>No feedback given yet. We are longing for your opinion.</b></p>
 }
 
 const App = () => {
