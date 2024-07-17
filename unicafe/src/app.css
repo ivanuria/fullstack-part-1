@@ -60,7 +60,6 @@ b {
 }
 .statistics th,
 .statistics td {
-    width: 50%;
     padding-block: .3rem;
 }
 .statistics tr:not(:last-child) th,
