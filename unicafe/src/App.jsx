@@ -6,7 +6,14 @@ const setFeedback = (newValue, setter)  => {
 
 const Button = ({innerText, onClick, className=""})  => <button className={className} onClick={onClick}>{innerText}</button>;
 
-const StatisticsLine = ({name, value}) => <span><b>{name}</b>: {value}</span>;
+const StatisticsLine = ({name, value}) => {
+  return (
+    <tr>
+      <th>{name}</th> 
+      <td>{value}</td>
+    </tr>
+  );
+}
 
 const Statistics = ({good, neutral, bad}) => {
   let all = good + neutral + bad;
@@ -17,14 +24,16 @@ const Statistics = ({good, neutral, bad}) => {
     if (isNaN(positive)) positive = 0;
 
     return (
-      <ul className="statistics">
-        <li><StatisticsLine name="Good" value={good} /></li>
-        <li><StatisticsLine name="Neutral" value={neutral} /></li>
-        <li><StatisticsLine name="Bad" value={bad} /></li>
-        <li><StatisticsLine name="All" value={all} /></li>
-        <li><StatisticsLine name="Average" value={average} /></li>
-        <li><StatisticsLine name="Positive" value={`${positive} %`} /></li>
-      </ul>
+      <table className="statistics">
+        <tbody>
+          <StatisticsLine name="Good" value={good} />
+          <StatisticsLine name="Neutral" value={neutral} />
+          <StatisticsLine name="Bad" value={bad} />
+          <StatisticsLine name="All" value={all} />
+          <StatisticsLine name="Average" value={average} />
+          <StatisticsLine name="Positive" value={`${positive} %`} />
+        </tbody>
+      </table>
     );
   }
   return <p><b>No feedback given yet. We are longing for your opinion.</b></p>
