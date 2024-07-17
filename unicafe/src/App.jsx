@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import './app.css';
+
 const setFeedback = (newValue, setter)  => {
   return () => setter(newValue);
 }
@@ -36,7 +38,7 @@ const Statistics = ({good, neutral, bad}) => {
       </table>
     );
   }
-  return <p><b>No feedback given yet. We are longing for your opinion.</b></p>
+  return <p class="statistics-no-feedback"><b>No feedback given yet. We are longing for your opinion.</b></p>
 }
 
 const App = () => {
@@ -50,14 +52,14 @@ const App = () => {
 
   return (
     <main className="unicafe-app">
-      <h1>We are craving for your feedback</h1>
-      <p>Please, press one of the following buttons reflecting your experience in <b>Unicafe</b></p>
+      <h1 className="title">We are craving for your feedback</h1>
+      <p className="subtitle">Please, press one of the following buttons reflecting your experience in <b>Unicafe</b></p>
       <div className="buttons">
-        <Button onClick={setFeedback(good + 1, setGood)} innerText="GOOD"/>
-        <Button onClick={setFeedback(neutral + 1, setNeutral)} innerText="NEUTRAL"/>
-        <Button onClick={setFeedback(bad + 1, setBad)} innerText="BAD"/>
+        <Button className="feedback-button -good" onClick={setFeedback(good + 1, setGood)} innerText="GOOD"/>
+        <Button className="feedback-button -neutral" onClick={setFeedback(neutral + 1, setNeutral)} innerText="NEUTRAL"/>
+        <Button className="feedback-button -bad" onClick={setFeedback(bad + 1, setBad)} innerText="BAD"/>
       </div>
-      <h2>Statistics</h2>
+      <h2 className="statistics-title">Statistics</h2>
       <Statistics good={good} neutral={neutral} bad={bad} />
     </main>
   );

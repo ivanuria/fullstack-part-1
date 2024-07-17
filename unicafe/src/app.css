@@ -1,0 +1,75 @@
+body {
+    --color-primary: #6E2C00;
+    --color-secondary: #A04000;
+    --color-good: #17A589;
+    --color-neutral: #D68910;
+    --color-bad: #E74C3C;
+    color: var(--color-primary);
+    text-align: center;
+}
+b {
+    color: var(--color-secondary);
+}
+.unicafe-app {
+    max-width: 767px;
+    margin-inline: auto;
+    padding: 2rem 1rem;
+}
+.title {
+    font-size: 2.5rem;
+}
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-block: 6rem;
+}
+.feedback-button {
+    padding: 1rem 2rem;
+    border: none;
+    font-size: 3rem;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow .15s linear;
+}
+.feedback-button:is(:hover, :focus-within) {
+    box-shadow: 0 0 10px var(--color-primary);
+}
+.feedback-button.-good {
+    --color-primary: var(--color-good);
+}
+.feedback-button.-neutral {
+    --color-primary: var(--color-neutral);
+}
+.feedback-button.-bad {
+    --color-primary: var(--color-bad);
+}
+.statistics {
+    border: none;
+    border-collapse: collapse;
+    margin-inline: auto;
+    width: 100%;
+    max-width: calc(767px / 2);
+}
+.statistics th,
+.statistics td {
+    width: 50%;
+    padding-block: .3rem;
+}
+.statistics tr:not(:last-child) th,
+.statistics tr:not(:last-child) td {
+    border-bottom: .5px solid currentcolor;
+}
+.statistics th {
+    text-align: left;
+}
+.statistics td {
+    text-align: right;
+}
