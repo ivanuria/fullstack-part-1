@@ -13,11 +13,8 @@ const Part = (props) => {
 }
 
 const Content = (props) => {
-  const final = [];
-  props.parts.forEach((part, index) => final.push(<Part key={index} part={part} />));
-  // Although it is said that we can avoid the loop, I cannot help myself.
-  console.log(final);
-  return (final);
+  return props.parts.map((part, index) => <Part key={index} part={part} />);
+  // Couldn't help myself
 }
 
 const Total = (props) => {
