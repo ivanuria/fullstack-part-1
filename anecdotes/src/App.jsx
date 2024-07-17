@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import "./app.css";
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
@@ -8,7 +9,7 @@ const Anecdote = ({anecdote}) => {
   return (
     <figure>
       <blockquote>{anecdote["anecdote"]}</blockquote>
-      <figcaption>{anecdote["author"]}</figcaption>
+      <figcaption>by {anecdote["author"]}</figcaption>
     </figure>
   );
 }
@@ -70,12 +71,25 @@ const App = () => {
     setPoints(pointsCopy);
   }
 
+  const getMostVoted = () => {
+    const keys = [...Object.keys(points)];
+    const max = Math.max(...Object.values(points));
+    console.log("Keys: ", keys);
+    console.log("MAX: ", max);
+    return keys.filter(key => points[key] == max)[0];
+  }
+  
+  console.log("MostVoted: ", getMostVoted());
+
   return (
     <main className="anecdotes">
+      <h1>Anecdote of the day</h1>
       <Anecdote anecdote={anecdotes[selected]} />
       <TotalVotes votes={points[selected]} />
       <Button onClick={() => setSelected(getRandomInt(anecdotes.length))} innerText="Get a random anecdote" />
       <Button onClick={vote} innerText="Vote for anecdote" />
+      <h2>Anecdote with most votes</h2>
+      <Anecdote anecdote={anecdotes[getMostVoted()]} />
     </main>
   );
 }

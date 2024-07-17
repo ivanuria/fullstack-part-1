@@ -1,0 +1,14 @@
+blockquote {
+    margin-inline: 0px;
+    border-left: none;
+    font-size: 2rem;
+}
+blockquote:before {
+    content: '\201C';
+}
+blockquote:after {
+    content: '\201D';
+}
+blockquote + figcaption {
+    text-align: left;
+}
